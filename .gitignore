@@ -1,0 +1,37 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.pyc
+
+# Virtual Environment
+venv/
+env/
+ENV/
+.venv
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# Data (optional - uncomment if dataset is too large)
+# data/*.csv
+
+# Models (optional - uncomment if models are too large for GitHub)
+# model/saved_models/*.pkl
+# model/saved_models/*.joblib
+
+# Streamlit
+.streamlit/secrets.toml
