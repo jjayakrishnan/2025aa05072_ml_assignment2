@@ -249,18 +249,16 @@ All models are evaluated using 6 comprehensive metrics:
 
 ### Model Performance Comparison
 
-*(Results will be populated after training)*
-
 | Model | Accuracy | AUC Score | Precision | Recall | F1 Score | MCC |
 |-------|----------|-----------|-----------|--------|----------|-----|
-| Logistic Regression | TBD | TBD | TBD | TBD | TBD | TBD |
-| Decision Tree | TBD | TBD | TBD | TBD | TBD | TBD |
-| K-Nearest Neighbors | TBD | TBD | TBD | TBD | TBD | TBD |
-| Naive Bayes | TBD | TBD | TBD | TBD | TBD | TBD |
-| Random Forest | TBD | TBD | TBD | TBD | TBD | TBD |
-| XGBoost | TBD | TBD | TBD | TBD | TBD | TBD |
+| **XGBoost** | **0.9219** | **0.9547** | **0.6829** | **0.5733** | **0.6233** | **0.5829** |
+| Decision Tree | 0.9161 | 0.9213 | 0.6357 | 0.5981 | 0.6163 | 0.5696 |
+| Random Forest | 0.9211 | 0.9534 | 0.7050 | 0.5151 | 0.5953 | 0.5611 |
+| Logistic Regression | 0.9138 | 0.9370 | 0.7004 | 0.4106 | 0.5177 | 0.4943 |
+| Naive Bayes | 0.8536 | 0.8606 | 0.4024 | 0.6175 | 0.4872 | 0.4189 |
+| K-Nearest Neighbors | 0.9026 | 0.8596 | 0.6098 | 0.3772 | 0.4660 | 0.4303 |
 
-**Best Model:** TBD (based on F1 Score)
+**Best Model:** XGBoost (F1 Score: 0.6233)
 
 ---
 
@@ -344,26 +342,30 @@ All models are evaluated using 6 comprehensive metrics:
 
 ### Key Findings
 
-*(To be updated after model training)*
+1. **Best Performing Model: XGBoost**
+   - Achieved highest F1 Score of **0.6233**
+   - Best balance between Precision (0.6829) and Recall (0.5733)
+   - Highest AUC Score (0.9547) indicating excellent discrimination ability
+   - Superior performance due to gradient boosting and handling of imbalanced data
 
-1. **Best Performing Model:**
-   - TBD based on F1 Score
-   - Reasons for superior performance
-
-2. **Model Comparison:**
-   - Ensemble models (Random Forest, XGBoost) typically perform better
-   - Logistic Regression provides good baseline
-   - Decision Tree may overfit without proper tuning
+2. **Model Comparison Analysis:**
+   - **Ensemble Models Outperform:** Both XGBoost and Random Forest achieved top performance
+   - **Decision Tree:** Good performance (F1: 0.6163) but prone to overfitting without ensemble
+   - **Logistic Regression:** Solid baseline (F1: 0.5177) with high precision (0.7004)
+   - **Naive Bayes:** Highest recall (0.6175) but lower precision, suitable when false negatives are costly
+   - **KNN:** Moderate performance (F1: 0.4660), sensitive to feature scaling
 
 3. **Dataset Characteristics:**
-   - Class imbalance affects model performance
-   - Feature engineering opportunities (duration, campaign)
-   - Categorical encoding impact
+   - **Class Imbalance:** Dataset is imbalanced (majority class: "no")
+   - **Feature Impact:** Duration and campaign-related features are strong predictors
+   - **Categorical Encoding:** Label encoding worked well for tree-based models
+   - **Scaling Importance:** Critical for distance-based models (KNN, Logistic Regression)
 
 4. **Evaluation Insights:**
-   - F1 Score is crucial for imbalanced datasets
-   - MCC provides balanced view of performance
-   - AUC Score shows discrimination ability
+   - **F1 Score:** Most important metric for imbalanced classification
+   - **MCC:** XGBoost achieved highest MCC (0.5829), confirming balanced performance
+   - **AUC Score:** All models achieved >0.85 AUC, indicating good discrimination
+   - **Precision vs Recall Trade-off:** Random Forest has highest precision (0.7050) but lower recall
 
 ### Recommendations
 
