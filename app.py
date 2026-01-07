@@ -144,19 +144,20 @@ st.markdown("""
         font-weight: 600;
     }
     
-    /* Tables and DataFrames - EXPLICIT styling */
-    .dataframe, table {
+    /* Tables and DataFrames - FORCE light backgrounds */
+    .dataframe, table, tbody, thead, tr, td, th {
         background-color: #ffffff !important;
+        color: #000000 !important;
     }
     
-    .dataframe th, table th {
+    .dataframe th, table th, thead th {
         background-color: #e0e0e0 !important;
         color: #000000 !important;
         font-weight: 700 !important;
         padding: 8px !important;
     }
     
-    .dataframe td, table td {
+    .dataframe td, table td, tbody td {
         background-color: #ffffff !important;
         color: #000000 !important;
         padding: 8px !important;
@@ -171,18 +172,32 @@ st.markdown("""
         color: #000000 !important;
     }
     
-    /* Streamlit specific dataframe */
-    [data-testid="stDataFrame"] {
-        background-color: #ffffff !important;
-    }
-    
-    [data-testid="stDataFrame"] table {
+    /* Streamlit specific dataframe - all variations */
+    [data-testid="stDataFrame"], [data-testid="stDataFrame"] *, 
+    [data-testid="stDataFrame"] table, [data-testid="stDataFrame"] tbody,
+    [data-testid="stDataFrame"] thead, [data-testid="stDataFrame"] tr {
         background-color: #ffffff !important;
     }
     
     [data-testid="stDataFrame"] td, [data-testid="stDataFrame"] th {
         color: #000000 !important;
         background-color: #ffffff !important;
+        padding: 8px !important;
+    }
+    
+    [data-testid="stDataFrame"] th {
+        background-color: #e0e0e0 !important;
+    }
+    
+    /* Styled dataframe (when using .style) */
+    .dataframe-container, .stDataFrame, div[data-testid="stDataFrame"] {
+        background-color: #ffffff !important;
+    }
+    
+    /* Override any inline styles on table elements */
+    table[style], tbody[style], tr[style], td[style], th[style] {
+        background-color: #ffffff !important;
+        color: #000000 !important;
     }
     
     /* Input fields */
