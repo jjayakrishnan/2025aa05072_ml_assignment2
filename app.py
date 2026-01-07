@@ -192,10 +192,28 @@ st.markdown("""
         border: 1px solid #cccccc !important;
     }
     
-    /* Radio buttons */
+    /* Radio buttons - make them visible */
     .stRadio label {
         color: #000000 !important;
         font-size: 16px !important;
+    }
+    
+    .stRadio input[type="radio"] {
+        opacity: 1 !important;
+        width: 16px !important;
+        height: 16px !important;
+        margin-right: 8px !important;
+    }
+    
+    .stRadio > div {
+        background-color: transparent !important;
+    }
+    
+    /* Radio button circles */
+    input[type="radio"] {
+        -webkit-appearance: radio !important;
+        appearance: radio !important;
+        opacity: 1 !important;
     }
     
     /* Captions and small text */
