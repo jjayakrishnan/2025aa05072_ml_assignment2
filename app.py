@@ -169,10 +169,54 @@ st.markdown("""
         font-weight: 600;
     }
     
-    /* Tables */
+    /* Tables - light background with black text */
     .dataframe {
+        background-color: #ffffff !important;
         color: #000000 !important;
         font-size: 15px !important;
+    }
+    
+    .dataframe th {
+        background-color: #f0f0f0 !important;
+        color: #000000 !important;
+        font-weight: 700 !important;
+    }
+    
+    .dataframe td {
+        background-color: #ffffff !important;
+        color: #000000 !important;
+    }
+    
+    .dataframe tr {
+        background-color: #ffffff !important;
+    }
+    
+    .dataframe tbody tr:nth-child(even) {
+        background-color: #f8f8f8 !important;
+    }
+    
+    /* Streamlit dataframe container */
+    [data-testid="stDataFrame"] {
+        background-color: #ffffff !important;
+    }
+    
+    [data-testid="stDataFrame"] * {
+        color: #000000 !important;
+    }
+    
+    /* Table headers and cells */
+    table {
+        background-color: #ffffff !important;
+        color: #000000 !important;
+    }
+    
+    table th, table td {
+        background-color: #ffffff !important;
+        color: #000000 !important;
+    }
+    
+    table thead {
+        background-color: #e0e0e0 !important;
     }
     
     /* Radio buttons and other inputs */
