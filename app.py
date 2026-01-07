@@ -30,216 +30,79 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
-# Custom CSS - Comprehensive light theme for ALL elements
+# Custom CSS - Simplified for maximum compatibility
 st.markdown("""
     <style>
-    /* Force light background on main elements */
-    .stApp, .main, body, html {
-        background-color: #ffffff !important;
-        color: #000000 !important;
-    }
-    
-    /* All text elements - but NOT table cells */
-    body, p, span, div:not(td):not(th), label, h1, h2, h3, h4, h5, h6, a, li {
-        color: #000000 !important;
+    /* Main backgrounds */
+    .stApp {
+        background-color: #ffffff;
     }
     
     /* Metric cards */
-    .stMetric {
-        background-color: #f0f0f0 !important;
+    div[data-testid="stMetric"] {
+        background-color: #f0f0f0;
         padding: 20px;
         border-radius: 8px;
-        border: 2px solid #cccccc;
     }
     
-    .stMetric label {
-        font-size: 18px !important;
-        font-weight: 700 !important;
-        color: #000000 !important;
+    div[data-testid="stMetricLabel"] {
+        font-size: 16px;
+        font-weight: 600;
+        color: #333333;
     }
     
-    .stMetric [data-testid="stMetricValue"] {
-        font-size: 36px !important;
-        font-weight: 900 !important;
-        color: #000000 !important;
+    div[data-testid="stMetricValue"] {
+        font-size: 32px;
+        font-weight: 700;
+        color: #000000;
     }
     
     /* Headers */
     h1, h2, h3 {
-        color: #000000 !important;
-        font-weight: 700 !important;
+        color: #000000;
+        font-weight: 700;
     }
     
     /* Buttons */
     .stButton>button {
-        background-color: #0066cc !important;
-        color: #ffffff !important;
+        background-color: #0066cc;
+        color: #ffffff;
         font-size: 16px;
         font-weight: 700;
         padding: 12px 24px;
         border-radius: 6px;
-        border: none;
-    }
-    
-    /* Dropdown/Selectbox */
-    .stSelectbox, .stSelectbox * {
-        background-color: #ffffff !important;
-        color: #000000 !important;
-    }
-    
-    .stSelectbox [data-baseweb="select"] > div {
-        background-color: #ffffff !important;
-        color: #000000 !important;
-        border: 2px solid #cccccc !important;
-    }
-    
-    /* File uploader - FORCE light background */
-    .stFileUploader, .stFileUploader *, .stFileUploader section, .stFileUploader div {
-        background-color: #f8f8f8 !important;
-        color: #000000 !important;
-    }
-    
-    .stFileUploader [data-testid="stFileUploadDropzone"] {
-        background-color: #f8f8f8 !important;
-        border: 2px dashed #999999 !important;
-    }
-    
-    .stFileUploader button {
-        background-color: #333333 !important;
-        color: #ffffff !important;
     }
     
     /* Sidebar */
-    [data-testid="stSidebar"] {
-        background-color: #f5f5f5 !important;
+    section[data-testid="stSidebar"] {
+        background-color: #f5f5f5;
     }
     
-    [data-testid="stSidebar"] * {
-        color: #000000 !important;
-        background-color: transparent !important;
+    /* Radio buttons */
+    .stRadio > label {
+        color: #000000;
+        font-size: 16px;
     }
     
-    /* Messages */
+    /* Success/Info/Warning messages */
     .stSuccess {
-        background-color: #d4edda !important;
-        color: #155724 !important;
-        font-weight: 600;
+        background-color: #d4edda;
+        color: #155724;
     }
     
     .stInfo {
-        background-color: #d1ecf1 !important;
-        color: #0c5460 !important;
-        font-weight: 600;
+        background-color: #d1ecf1;
+        color: #0c5460;
     }
     
     .stWarning {
-        background-color: #fff3cd !important;
-        color: #856404 !important;
-        font-weight: 600;
+        background-color: #fff3cd;
+        color: #856404;
     }
     
     .stError {
-        background-color: #f8d7da !important;
-        color: #721c24 !important;
-        font-weight: 600;
-    }
-    
-    /* Tables and DataFrames - FORCE light backgrounds */
-    .dataframe, table, tbody, thead, tr, td, th {
-        background-color: #ffffff !important;
-        color: #000000 !important;
-    }
-    
-    .dataframe th, table th, thead th {
-        background-color: #e0e0e0 !important;
-        color: #000000 !important;
-        font-weight: 700 !important;
-        padding: 8px !important;
-    }
-    
-    .dataframe td, table td, tbody td {
-        background-color: #ffffff !important;
-        color: #000000 !important;
-        padding: 8px !important;
-    }
-    
-    .dataframe tbody tr:nth-child(even), table tbody tr:nth-child(even) {
-        background-color: #f8f8f8 !important;
-    }
-    
-    .dataframe tbody tr:nth-child(even) td {
-        background-color: #f8f8f8 !important;
-        color: #000000 !important;
-    }
-    
-    /* Streamlit specific dataframe - all variations */
-    [data-testid="stDataFrame"], [data-testid="stDataFrame"] *, 
-    [data-testid="stDataFrame"] table, [data-testid="stDataFrame"] tbody,
-    [data-testid="stDataFrame"] thead, [data-testid="stDataFrame"] tr {
-        background-color: #ffffff !important;
-    }
-    
-    [data-testid="stDataFrame"] td, [data-testid="stDataFrame"] th {
-        color: #000000 !important;
-        background-color: #ffffff !important;
-        padding: 8px !important;
-    }
-    
-    [data-testid="stDataFrame"] th {
-        background-color: #e0e0e0 !important;
-    }
-    
-    /* Styled dataframe (when using .style) */
-    .dataframe-container, .stDataFrame, div[data-testid="stDataFrame"] {
-        background-color: #ffffff !important;
-    }
-    
-    /* Override any inline styles on table elements */
-    table[style], tbody[style], tr[style], td[style], th[style] {
-        background-color: #ffffff !important;
-        color: #000000 !important;
-    }
-    
-    /* Input fields */
-    input, textarea, select {
-        background-color: #ffffff !important;
-        color: #000000 !important;
-        border: 1px solid #cccccc !important;
-    }
-    
-    /* Radio buttons - make them visible */
-    .stRadio label {
-        color: #000000 !important;
-        font-size: 16px !important;
-    }
-    
-    .stRadio input[type="radio"] {
-        opacity: 1 !important;
-        width: 16px !important;
-        height: 16px !important;
-        margin-right: 8px !important;
-    }
-    
-    .stRadio > div {
-        background-color: transparent !important;
-    }
-    
-    /* Radio button circles */
-    input[type="radio"] {
-        -webkit-appearance: radio !important;
-        appearance: radio !important;
-        opacity: 1 !important;
-    }
-    
-    /* Captions and small text */
-    .caption, small {
-        color: #333333 !important;
-    }
-    
-    /* Override any dark theme */
-    [data-theme="dark"], [data-theme="dark"] * {
-        background-color: #ffffff !important;
-        color: #000000 !important;
+        background-color: #f8d7da;
+        color: #721c24;
     }
     </style>
     """, unsafe_allow_html=True)
