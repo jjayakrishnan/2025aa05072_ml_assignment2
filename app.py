@@ -33,18 +33,14 @@ st.set_page_config(
 # Custom CSS - Comprehensive light theme for ALL elements
 st.markdown("""
     <style>
-    /* Force light background on EVERYTHING */
-    *, *::before, *::after {
-        background-color: inherit !important;
-    }
-    
+    /* Force light background on main elements */
     .stApp, .main, body, html {
         background-color: #ffffff !important;
         color: #000000 !important;
     }
     
-    /* All text elements */
-    body, p, span, div, label, h1, h2, h3, h4, h5, h6, a, li, td, th, input, textarea, select {
+    /* All text elements - but NOT table cells */
+    body, p, span, div:not(td):not(th), label, h1, h2, h3, h4, h5, h6, a, li {
         color: #000000 !important;
     }
     
@@ -148,20 +144,45 @@ st.markdown("""
         font-weight: 600;
     }
     
-    /* Tables and DataFrames */
-    .dataframe, .dataframe *, table, table *, [data-testid="stDataFrame"], [data-testid="stDataFrame"] * {
+    /* Tables and DataFrames - EXPLICIT styling */
+    .dataframe, table {
         background-color: #ffffff !important;
-        color: #000000 !important;
     }
     
     .dataframe th, table th {
         background-color: #e0e0e0 !important;
         color: #000000 !important;
         font-weight: 700 !important;
+        padding: 8px !important;
+    }
+    
+    .dataframe td, table td {
+        background-color: #ffffff !important;
+        color: #000000 !important;
+        padding: 8px !important;
     }
     
     .dataframe tbody tr:nth-child(even), table tbody tr:nth-child(even) {
         background-color: #f8f8f8 !important;
+    }
+    
+    .dataframe tbody tr:nth-child(even) td {
+        background-color: #f8f8f8 !important;
+        color: #000000 !important;
+    }
+    
+    /* Streamlit specific dataframe */
+    [data-testid="stDataFrame"] {
+        background-color: #ffffff !important;
+    }
+    
+    [data-testid="stDataFrame"] table {
+        background-color: #ffffff !important;
+    }
+    
+    [data-testid="stDataFrame"] td, [data-testid="stDataFrame"] th {
+        color: #000000 !important;
+        background-color: #ffffff !important;
     }
     
     /* Input fields */
