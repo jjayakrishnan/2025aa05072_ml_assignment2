@@ -97,6 +97,37 @@ st.markdown("""
         border-radius: 6px;
     }
     
+    /* Dropdown/Selectbox - light background */
+    .stSelectbox > div > div {
+        background-color: #ffffff !important;
+        color: #000000 !important;
+    }
+    
+    .stSelectbox [data-baseweb="select"] {
+        background-color: #ffffff !important;
+    }
+    
+    .stSelectbox [data-baseweb="select"] > div {
+        background-color: #ffffff !important;
+        color: #000000 !important;
+        border: 2px solid #cccccc !important;
+    }
+    
+    /* File uploader - light background */
+    .stFileUploader > div {
+        background-color: #f8f8f8 !important;
+        border: 2px dashed #999999 !important;
+    }
+    
+    .stFileUploader section {
+        background-color: #f8f8f8 !important;
+        color: #000000 !important;
+    }
+    
+    .stFileUploader label, .stFileUploader span, .stFileUploader div {
+        color: #000000 !important;
+    }
+    
     /* Input labels */
     .stSelectbox label, .stFileUploader label {
         color: #000000 !important;
