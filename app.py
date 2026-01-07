@@ -30,27 +30,27 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
-# Custom CSS - Force light theme and high visibility
+# Custom CSS - Comprehensive light theme for ALL elements
 st.markdown("""
     <style>
-    /* Force light background everywhere */
-    .stApp {
-        background-color: #ffffff;
+    /* Force light background on EVERYTHING */
+    *, *::before, *::after {
+        background-color: inherit !important;
     }
     
-    .main {
-        background-color: #ffffff;
-        color: #000000;
+    .stApp, .main, body, html {
+        background-color: #ffffff !important;
+        color: #000000 !important;
     }
     
-    /* All text should be dark and visible */
-    body, p, span, div, label, h1, h2, h3, h4, h5, h6 {
+    /* All text elements */
+    body, p, span, div, label, h1, h2, h3, h4, h5, h6, a, li, td, th, input, textarea, select {
         color: #000000 !important;
     }
     
     /* Metric cards */
     .stMetric {
-        background-color: #f0f0f0;
+        background-color: #f0f0f0 !important;
         padding: 20px;
         border-radius: 8px;
         border: 2px solid #cccccc;
@@ -68,43 +68,27 @@ st.markdown("""
         color: #000000 !important;
     }
     
-    /* Headers - all black */
-    h1 {
+    /* Headers */
+    h1, h2, h3 {
         color: #000000 !important;
-        font-size: 32px !important;
-        font-weight: 800 !important;
-    }
-    
-    h2 {
-        color: #000000 !important;
-        font-size: 24px !important;
-        font-weight: 700 !important;
-    }
-    
-    h3 {
-        color: #000000 !important;
-        font-size: 20px !important;
         font-weight: 700 !important;
     }
     
     /* Buttons */
     .stButton>button {
-        background-color: #0066cc;
-        color: #ffffff;
+        background-color: #0066cc !important;
+        color: #ffffff !important;
         font-size: 16px;
         font-weight: 700;
         padding: 12px 24px;
         border-radius: 6px;
+        border: none;
     }
     
-    /* Dropdown/Selectbox - light background */
-    .stSelectbox > div > div {
+    /* Dropdown/Selectbox */
+    .stSelectbox, .stSelectbox * {
         background-color: #ffffff !important;
         color: #000000 !important;
-    }
-    
-    .stSelectbox [data-baseweb="select"] {
-        background-color: #ffffff !important;
     }
     
     .stSelectbox [data-baseweb="select"] > div {
@@ -113,116 +97,95 @@ st.markdown("""
         border: 2px solid #cccccc !important;
     }
     
-    /* File uploader - light background */
-    .stFileUploader > div {
+    /* File uploader - FORCE light background */
+    .stFileUploader, .stFileUploader *, .stFileUploader section, .stFileUploader div {
+        background-color: #f8f8f8 !important;
+        color: #000000 !important;
+    }
+    
+    .stFileUploader [data-testid="stFileUploadDropzone"] {
         background-color: #f8f8f8 !important;
         border: 2px dashed #999999 !important;
     }
     
-    .stFileUploader section {
-        background-color: #f8f8f8 !important;
-        color: #000000 !important;
-    }
-    
-    .stFileUploader label, .stFileUploader span, .stFileUploader div {
-        color: #000000 !important;
-    }
-    
-    /* Input labels */
-    .stSelectbox label, .stFileUploader label {
-        color: #000000 !important;
-        font-size: 16px !important;
-        font-weight: 600 !important;
+    .stFileUploader button {
+        background-color: #333333 !important;
+        color: #ffffff !important;
     }
     
     /* Sidebar */
     [data-testid="stSidebar"] {
-        background-color: #f5f5f5;
+        background-color: #f5f5f5 !important;
     }
     
     [data-testid="stSidebar"] * {
         color: #000000 !important;
+        background-color: transparent !important;
     }
     
-    /* Success/Info/Warning/Error messages */
+    /* Messages */
     .stSuccess {
-        background-color: #d4edda;
+        background-color: #d4edda !important;
         color: #155724 !important;
         font-weight: 600;
     }
     
     .stInfo {
-        background-color: #d1ecf1;
+        background-color: #d1ecf1 !important;
         color: #0c5460 !important;
         font-weight: 600;
     }
     
     .stWarning {
-        background-color: #fff3cd;
+        background-color: #fff3cd !important;
         color: #856404 !important;
         font-weight: 600;
     }
     
     .stError {
-        background-color: #f8d7da;
+        background-color: #f8d7da !important;
         color: #721c24 !important;
         font-weight: 600;
     }
     
-    /* Tables - light background with black text */
-    .dataframe {
+    /* Tables and DataFrames */
+    .dataframe, .dataframe *, table, table *, [data-testid="stDataFrame"], [data-testid="stDataFrame"] * {
         background-color: #ffffff !important;
         color: #000000 !important;
-        font-size: 15px !important;
     }
     
-    .dataframe th {
-        background-color: #f0f0f0 !important;
+    .dataframe th, table th {
+        background-color: #e0e0e0 !important;
         color: #000000 !important;
         font-weight: 700 !important;
     }
     
-    .dataframe td {
-        background-color: #ffffff !important;
-        color: #000000 !important;
-    }
-    
-    .dataframe tr {
-        background-color: #ffffff !important;
-    }
-    
-    .dataframe tbody tr:nth-child(even) {
+    .dataframe tbody tr:nth-child(even), table tbody tr:nth-child(even) {
         background-color: #f8f8f8 !important;
     }
     
-    /* Streamlit dataframe container */
-    [data-testid="stDataFrame"] {
-        background-color: #ffffff !important;
-    }
-    
-    [data-testid="stDataFrame"] * {
-        color: #000000 !important;
-    }
-    
-    /* Table headers and cells */
-    table {
+    /* Input fields */
+    input, textarea, select {
         background-color: #ffffff !important;
         color: #000000 !important;
+        border: 1px solid #cccccc !important;
     }
     
-    table th, table td {
-        background-color: #ffffff !important;
-        color: #000000 !important;
-    }
-    
-    table thead {
-        background-color: #e0e0e0 !important;
-    }
-    
-    /* Radio buttons and other inputs */
+    /* Radio buttons */
     .stRadio label {
         color: #000000 !important;
         font-size: 16px !important;
+    }
+    
+    /* Captions and small text */
+    .caption, small {
+        color: #333333 !important;
+    }
+    
+    /* Override any dark theme */
+    [data-theme="dark"], [data-theme="dark"] * {
+        background-color: #ffffff !important;
+        color: #000000 !important;
     }
     </style>
     """, unsafe_allow_html=True)
