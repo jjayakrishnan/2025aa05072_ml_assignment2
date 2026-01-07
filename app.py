@@ -30,38 +30,103 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
-# Custom CSS for better styling
+# Custom CSS for better accessibility and styling
 st.markdown("""
     <style>
+    /* Main content area */
     .main {
         padding: 0rem 1rem;
+        font-size: 16px;
     }
+    
+    /* Improve metric card readability */
     .stMetric {
-        background-color: #f0f2f6;
-        padding: 15px;
-        border-radius: 10px;
+        background-color: #ffffff;
+        padding: 20px;
+        border-radius: 8px;
+        border: 2px solid #e0e0e0;
         box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     }
-    .metric-container {
-        display: flex;
-        justify-content: space-around;
-        margin: 20px 0;
+    
+    /* Metric label - high contrast */
+    .stMetric label {
+        font-size: 18px !important;
+        font-weight: 600 !important;
+        color: #000000 !important;
     }
+    
+    /* Metric value - high contrast and larger */
+    .stMetric [data-testid="stMetricValue"] {
+        font-size: 28px !important;
+        font-weight: 700 !important;
+        color: #000000 !important;
+    }
+    
+    /* Headers - high contrast */
+    h1, h2, h3 {
+        color: #000000 !important;
+        font-weight: 700 !important;
+    }
+    
     h1 {
-        color: #1f77b4;
         text-align: center;
         padding: 20px 0;
+        font-size: 32px !important;
     }
+    
+    h2 {
+        font-size: 24px !important;
+        margin-top: 20px;
+    }
+    
+    h3 {
+        font-size: 20px !important;
+    }
+    
+    /* Buttons - high contrast */
     .stButton>button {
         width: 100%;
-        background-color: #1f77b4;
-        color: white;
+        background-color: #0066cc;
+        color: #ffffff;
         border-radius: 5px;
-        padding: 10px;
-        font-weight: bold;
+        padding: 12px 20px;
+        font-weight: 700;
+        font-size: 16px;
+        border: 2px solid #0066cc;
     }
+    
     .stButton>button:hover {
-        background-color: #145a8a;
+        background-color: #004499;
+        border-color: #004499;
+    }
+    
+    /* Text readability */
+    p, li, span {
+        font-size: 16px;
+        line-height: 1.6;
+        color: #000000;
+    }
+    
+    /* Sidebar text */
+    .css-1d391kg, [data-testid="stSidebar"] {
+        font-size: 16px;
+    }
+    
+    /* Success/Info/Warning messages - high contrast */
+    .stSuccess, .stInfo, .stWarning, .stError {
+        font-size: 16px !important;
+        font-weight: 600 !important;
+    }
+    
+    /* Table text */
+    .dataframe {
+        font-size: 16px !important;
+    }
+    
+    /* Caption text */
+    .caption {
+        font-size: 14px;
+        color: #333333;
     }
     </style>
     """, unsafe_allow_html=True)
