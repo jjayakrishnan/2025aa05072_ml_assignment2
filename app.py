@@ -30,7 +30,7 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
-# Custom CSS for better accessibility and styling
+# Custom CSS for professional and accessible styling
 st.markdown("""
     <style>
     /* Main content area */
@@ -39,94 +39,107 @@ st.markdown("""
         font-size: 16px;
     }
     
-    /* Improve metric card readability */
+    /* Metric cards - clean and readable */
     .stMetric {
-        background-color: #ffffff;
-        padding: 20px;
+        background-color: #f8f9fa;
+        padding: 18px;
         border-radius: 8px;
-        border: 2px solid #e0e0e0;
-        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        border: 1px solid #dee2e6;
     }
     
-    /* Metric label - high contrast */
+    /* Metric label */
     .stMetric label {
-        font-size: 18px !important;
+        font-size: 16px !important;
         font-weight: 600 !important;
-        color: #000000 !important;
+        color: #495057 !important;
     }
     
-    /* Metric value - high contrast and larger */
+    /* Metric value - large and clear */
     .stMetric [data-testid="stMetricValue"] {
-        font-size: 28px !important;
+        font-size: 32px !important;
         font-weight: 700 !important;
-        color: #000000 !important;
+        color: #212529 !important;
     }
     
-    /* Headers - high contrast */
-    h1, h2, h3 {
-        color: #000000 !important;
-        font-weight: 700 !important;
-    }
-    
+    /* Headers */
     h1 {
+        color: #1a1a1a !important;
         text-align: center;
         padding: 20px 0;
-        font-size: 32px !important;
+        font-size: 28px !important;
+        font-weight: 700 !important;
     }
     
     h2 {
-        font-size: 24px !important;
+        color: #2c3e50 !important;
+        font-size: 22px !important;
+        font-weight: 600 !important;
         margin-top: 20px;
     }
     
     h3 {
-        font-size: 20px !important;
-    }
-    
-    /* Buttons - high contrast */
-    .stButton>button {
-        width: 100%;
-        background-color: #0066cc;
-        color: #ffffff;
-        border-radius: 5px;
-        padding: 12px 20px;
-        font-weight: 700;
-        font-size: 16px;
-        border: 2px solid #0066cc;
-    }
-    
-    .stButton>button:hover {
-        background-color: #004499;
-        border-color: #004499;
-    }
-    
-    /* Text readability */
-    p, li, span {
-        font-size: 16px;
-        line-height: 1.6;
-        color: #000000;
-    }
-    
-    /* Sidebar text */
-    .css-1d391kg, [data-testid="stSidebar"] {
-        font-size: 16px;
-    }
-    
-    /* Success/Info/Warning messages - high contrast */
-    .stSuccess, .stInfo, .stWarning, .stError {
-        font-size: 16px !important;
+        color: #34495e !important;
+        font-size: 18px !important;
         font-weight: 600 !important;
     }
     
-    /* Table text */
-    .dataframe {
-        font-size: 16px !important;
+    /* Buttons */
+    .stButton>button {
+        width: 100%;
+        background-color: #0d6efd;
+        color: #ffffff;
+        border-radius: 6px;
+        padding: 10px 20px;
+        font-weight: 600;
+        font-size: 15px;
+        border: none;
     }
     
-    /* Caption text */
-    .caption {
-        font-size: 14px;
-        color: #333333;
+    .stButton>button:hover {
+        background-color: #0b5ed7;
+    }
+    
+    /* Success messages */
+    .stSuccess {
+        background-color: #d1e7dd;
+        color: #0f5132;
+        padding: 12px;
+        border-radius: 6px;
+        font-weight: 500;
+    }
+    
+    /* Info messages */
+    .stInfo {
+        background-color: #cfe2ff;
+        color: #084298;
+        padding: 12px;
+        border-radius: 6px;
+    }
+    
+    /* Warning messages */
+    .stWarning {
+        background-color: #fff3cd;
+        color: #664d03;
+        padding: 12px;
+        border-radius: 6px;
+    }
+    
+    /* Error messages */
+    .stError {
+        background-color: #f8d7da;
+        color: #842029;
+        padding: 12px;
+        border-radius: 6px;
+    }
+    
+    /* Dataframe styling */
+    .dataframe {
+        font-size: 14px !important;
+    }
+    
+    /* Sidebar */
+    [data-testid="stSidebar"] {
+        background-color: #f8f9fa;
     }
     </style>
     """, unsafe_allow_html=True)
