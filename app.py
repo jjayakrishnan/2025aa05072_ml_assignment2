@@ -26,7 +26,6 @@ import seaborn as sns
 # Page configuration
 st.set_page_config(
     page_title="Bank Marketing Classifier",
-    page_icon="🏦",
     layout="wide",
     initial_sidebar_state="expanded"
 )
@@ -73,15 +72,16 @@ def load_models():
     """Load all trained models"""
     models = {}
     model_files = {
-        'Logistic Regression': 'model/saved_models/logistic_regression.pkl',
-        'Decision Tree': 'model/saved_models/decision_tree.pkl',
-        'K-Nearest Neighbors': 'model/saved_models/knn.pkl',
-        'Naive Bayes': 'model/saved_models/naive_bayes.pkl',
-        'Random Forest': 'model/saved_models/random_forest.pkl',
-        'XGBoost': 'model/saved_models/xgboost.pkl'
+        'Logistic Regression': 'logistic_regression.pkl',
+        'Decision Tree': 'decision_tree.pkl',
+        'K-Nearest Neighbors': 'knn.pkl',
+        'Naive Bayes': 'naive_bayes.pkl',
+        'Random Forest': 'random_forest.pkl',
+        'XGBoost': 'xgboost.pkl'
     }
     
-    for model_name, filepath in model_files.items():
+    for model_name, filename in model_files.items():
+        filepath = os.path.join('model', 'saved_models', filename)
         if os.path.exists(filepath):
             models[model_name] = joblib.load(filepath)
         else:
@@ -153,26 +153,26 @@ def display_metrics(metrics):
 
 def main():
     # Header
-    st.markdown("<h1>🏦 Bank Marketing Classification System</h1>", unsafe_allow_html=True)
+    st.markdown("<h1>Bank Marketing Classification System</h1>", unsafe_allow_html=True)
     st.markdown("<p style='text-align: center; color: #666;'>Student ID: 2025aa05072 | ML Assignment 2</p>", unsafe_allow_html=True)
     st.markdown("---")
     
     # Sidebar
     with st.sidebar:
-        st.header("📋 Navigation")
+        st.header("Navigation")
         page = st.radio("Select Page", ["Model Prediction", "Model Comparison", "About"])
         
         st.markdown("---")
-        st.header("ℹ️ Information")
+        st.header("Information")
         st.info("""
-        **Dataset:** Bank Marketing  
-        **Task:** Binary Classification  
-        **Target:** Term Deposit Subscription  
-        **Models:** 6 Classification Algorithms
+        Dataset: Bank Marketing  
+        Task: Binary Classification  
+        Target: Term Deposit Subscription  
+        Models: 6 Classification Algorithms
         """)
         
         st.markdown("---")
-        st.header("🔗 Links")
+        st.header("Links")
         st.markdown("[GitHub Repository](https://github.com/jjayakrishnan/2025aa05072_ml_assignment2)")
     
     # Main content based on page selection
@@ -186,7 +186,7 @@ def main():
 
 def show_prediction_page():
     """Main prediction page"""
-    st.header("🎯 Model Prediction & Evaluation")
+    st.header("Model Prediction and Evaluation")
     
     # Load models and preprocessor
     with st.spinner("Loading models..."):
@@ -197,10 +197,10 @@ def show_prediction_page():
         st.error("Failed to load models or preprocessor. Please ensure models are trained.")
         return
     
-    st.success(f"✅ Loaded {len(models)} models successfully!")
+    st.success(f"Loaded {len(models)} models successfully")
     
     # Model selection
-    st.subheader("1️⃣ Select Model")
+    st.subheader("Step 1: Select Model")
     selected_model = st.selectbox(
         "Choose a classification model:",
         list(models.keys()),
@@ -208,7 +208,7 @@ def show_prediction_page():
     )
     
     # File upload
-    st.subheader("2️⃣ Upload Test Data")
+    st.subheader("Step 2: Upload Test Data")
     uploaded_file = st.file_uploader(
         "Upload CSV file with test data",
         type=['csv'],
@@ -218,7 +218,7 @@ def show_prediction_page():
     # Sample data option
     col1, col2 = st.columns([3, 1])
     with col2:
-        if st.button("📥 Use Sample Data"):
+        if st.button("Use Sample Data"):
             uploaded_file = "sample"
     
     if uploaded_file is not None:
@@ -234,9 +234,9 @@ def show_prediction_page():
             df = pd.read_csv(uploaded_file)
         
         # Display data preview
-        st.subheader("3️⃣ Data Preview")
+        st.subheader("Step 3: Data Preview")
         st.dataframe(df.head(10), use_container_width=True)
-        st.caption(f"Dataset shape: {df.shape[0]} rows × {df.shape[1]} columns")
+        st.caption(f"Dataset shape: {df.shape[0]} rows x {df.shape[1]} columns")
         
         # Preprocess data
         with st.spinner("Preprocessing data..."):
@@ -247,7 +247,7 @@ def show_prediction_page():
             return
         
         # Make predictions
-        st.subheader("4️⃣ Predictions & Evaluation")
+        st.subheader("Step 4: Predictions and Evaluation")
         
         with st.spinner(f"Running {selected_model}..."):
             model = models[selected_model]
@@ -264,14 +264,14 @@ def show_prediction_page():
             # Calculate metrics
             metrics = calculate_all_metrics(y_true, y_pred, y_pred_proba)
             
-            st.success("✅ Evaluation Complete!")
+            st.success("Evaluation Complete")
             
             # Display metrics
-            st.subheader("📊 Evaluation Metrics")
+            st.subheader("Evaluation Metrics")
             display_metrics(metrics)
             
             # Confusion Matrix
-            st.subheader("🔲 Confusion Matrix")
+            st.subheader("Confusion Matrix")
             fig, ax = plt.subplots(figsize=(8, 6))
             cm = plt.cm.Blues
             sns.heatmap(
@@ -287,16 +287,16 @@ def show_prediction_page():
             st.pyplot(fig)
             
             # Classification Report
-            st.subheader("📋 Classification Report")
+            st.subheader("Classification Report")
             report = get_classification_report(y_true, y_pred)
             report_df = pd.DataFrame(report).T
             st.dataframe(report_df.style.format("{:.4f}"), use_container_width=True)
             
         else:
-            st.warning("⚠️ No target column found. Showing predictions only.")
+            st.warning("No target column found. Showing predictions only.")
             
             # Show predictions
-            st.subheader("🔮 Predictions")
+            st.subheader("Predictions")
             predictions_df = df.copy()
             predictions_df['Prediction'] = ['Yes' if p == 1 else 'No' for p in y_pred]
             
@@ -308,7 +308,7 @@ def show_prediction_page():
             # Download predictions
             csv = predictions_df.to_csv(index=False)
             st.download_button(
-                label="📥 Download Predictions",
+                label="Download Predictions",
                 data=csv,
                 file_name=f"{selected_model.lower().replace(' ', '_')}_predictions.csv",
                 mime="text/csv"
@@ -317,7 +317,7 @@ def show_prediction_page():
 
 def show_comparison_page():
     """Model comparison page"""
-    st.header("📊 Model Comparison")
+    st.header("Model Comparison")
     
     # Load comparison results
     results_df = load_comparison_results()
@@ -335,7 +335,7 @@ def show_comparison_page():
         best_model = results_df.index[0]
         best_f1 = results_df.loc[best_model, 'F1 Score']
         
-        st.success(f"🏆 **Best Model:** {best_model} (F1 Score: {best_f1:.4f})")
+        st.success(f"Best Model: {best_model} (F1 Score: {best_f1:.4f})")
         
         # Visualization
         st.subheader("Visual Comparison")
@@ -356,56 +356,56 @@ def show_comparison_page():
         st.pyplot(fig)
         
     else:
-        st.warning("⚠️ Model comparison results not found. Please train the models first.")
+        st.warning("Model comparison results not found. Please train the models first.")
 
 
 def show_about_page():
     """About page"""
-    st.header("ℹ️ About This Project")
+    st.header("About This Project")
     
     st.markdown("""
-    ### 🎓 ML Assignment 2
-    **Student ID:** 2025aa05072  
-    **Course:** M.Tech (AIML)  
-    **Institution:** BITS Pilani
+    ### ML Assignment 2
+    Student ID: 2025aa05072  
+    Course: M.Tech (AIML)  
+    Institution: BITS Pilani
     
     ---
     
-    ### 📊 Dataset
-    **Name:** Bank Marketing Dataset  
-    **Source:** UCI Machine Learning Repository  
-    **Task:** Binary Classification  
-    **Target:** Predict if a client will subscribe to a term deposit (yes/no)  
-    **Features:** 20 features (10 numerical, 10 categorical)  
-    **Instances:** 41,188 samples
+    ### Dataset
+    Name: Bank Marketing Dataset  
+    Source: UCI Machine Learning Repository  
+    Task: Binary Classification  
+    Target: Predict if a client will subscribe to a term deposit (yes/no)  
+    Features: 20 features (10 numerical, 10 categorical)  
+    Instances: 41,188 samples
     
     ---
     
-    ### 🤖 Models Implemented
+    ### Models Implemented
     
-    1. **Logistic Regression** - Linear classifier with regularization
-    2. **Decision Tree** - Tree-based rule learning
-    3. **K-Nearest Neighbors** - Instance-based learning
-    4. **Naive Bayes** - Probabilistic classifier
-    5. **Random Forest** - Ensemble of decision trees
-    6. **XGBoost** - Gradient boosting ensemble
-    
-    ---
-    
-    ### 📈 Evaluation Metrics
-    
-    - **Accuracy** - Overall correctness
-    - **AUC Score** - Area under ROC curve
-    - **Precision** - Positive predictive value
-    - **Recall** - Sensitivity/True positive rate
-    - **F1 Score** - Harmonic mean of precision and recall
-    - **MCC** - Matthews Correlation Coefficient
+    1. Logistic Regression - Linear classifier with regularization
+    2. Decision Tree - Tree-based rule learning
+    3. K-Nearest Neighbors - Instance-based learning
+    4. Naive Bayes - Probabilistic classifier
+    5. Random Forest - Ensemble of decision trees
+    6. XGBoost - Gradient boosting ensemble
     
     ---
     
-    ### 🚀 How to Use
+    ### Evaluation Metrics
     
-    1. Navigate to **Model Prediction** page
+    - Accuracy - Overall correctness
+    - AUC Score - Area under ROC curve
+    - Precision - Positive predictive value
+    - Recall - Sensitivity/True positive rate
+    - F1 Score - Harmonic mean of precision and recall
+    - MCC - Matthews Correlation Coefficient
+    
+    ---
+    
+    ### How to Use
+    
+    1. Navigate to Model Prediction page
     2. Select a classification model from the dropdown
     3. Upload your test data CSV file (or use sample data)
     4. View predictions and evaluation metrics
@@ -413,14 +413,14 @@ def show_about_page():
     
     ---
     
-    ### 🔗 Resources
+    ### Resources
     
-    - **GitHub:** [github.com/jjayakrishnan/2025aa05072_ml_assignment2](https://github.com/jjayakrishnan/2025aa05072_ml_assignment2)
-    - **Dataset:** [UCI Bank Marketing](https://archive.ics.uci.edu/ml/datasets/bank+marketing)
+    - GitHub: [github.com/jjayakrishnan/2025aa05072_ml_assignment2](https://github.com/jjayakrishnan/2025aa05072_ml_assignment2)
+    - Dataset: [UCI Bank Marketing](https://archive.ics.uci.edu/ml/datasets/bank+marketing)
     
     ---
     
-    ### 📝 Notes
+    ### Notes
     
     - All models are trained on 80% of the data
     - Test set contains 20% of the data

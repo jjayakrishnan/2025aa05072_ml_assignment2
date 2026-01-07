@@ -6,7 +6,7 @@
 
 ---
 
-## 📋 Table of Contents
+##  Table of Contents
 
 - [Project Overview](#project-overview)
 - [Dataset Information](#dataset-information)
@@ -23,7 +23,7 @@
 
 ---
 
-## 🎯 Project Overview
+##  Project Overview
 
 This project implements an end-to-end machine learning classification pipeline for predicting bank term deposit subscriptions. The system includes:
 
@@ -38,7 +38,7 @@ Predict whether a client will subscribe to a term deposit (yes/no) based on demo
 
 ---
 
-## 📊 Dataset Information
+##  Dataset Information
 
 ### Bank Marketing Dataset
 
@@ -77,7 +77,7 @@ Predict whether a client will subscribe to a term deposit (yes/no) based on demo
 
 ---
 
-## 🤖 Models Implemented
+##  Models Implemented
 
 ### 1. Logistic Regression
 - **Type:** Linear classifier
@@ -117,7 +117,7 @@ Predict whether a client will subscribe to a term deposit (yes/no) based on demo
 
 ---
 
-## 🛠️ Installation
+##  Installation
 
 ### Prerequisites
 
@@ -145,7 +145,7 @@ Predict whether a client will subscribe to a term deposit (yes/no) based on demo
 
 ---
 
-## 🚀 Usage
+##  Usage
 
 ### 1. Train Models
 
@@ -188,7 +188,7 @@ The app will open in your browser at `http://localhost:8501`
 
 ---
 
-## 📁 Project Structure
+##  Project Structure
 
 ```
 2025aa05072_ml_assignment2/
@@ -234,7 +234,7 @@ The app will open in your browser at `http://localhost:8501`
 
 ---
 
-## 📈 Evaluation Results
+##  Evaluation Results
 
 ### Evaluation Metrics
 
@@ -262,7 +262,7 @@ All models are evaluated using 6 comprehensive metrics:
 
 ---
 
-## 🌐 Streamlit Application
+##  Streamlit Application
 
 ### Features
 
@@ -302,7 +302,7 @@ All models are evaluated using 6 comprehensive metrics:
 
 ---
 
-## 🚀 Deployment
+##  Deployment
 
 ### GitHub Repository
 
@@ -338,7 +338,7 @@ All models are evaluated using 6 comprehensive metrics:
 
 ---
 
-## 🔍 Observations & Insights
+##  Observations & Insights
 
 ### Key Findings
 
@@ -382,7 +382,7 @@ All models are evaluated using 6 comprehensive metrics:
 
 ---
 
-## 📸 Screenshots
+##  Screenshots
 
 *(Screenshots will be added after deployment)*
 
@@ -406,7 +406,7 @@ All models are evaluated using 6 comprehensive metrics:
 
 ---
 
-## 📚 References
+##  References
 
 1. **Dataset:**
    - [UCI Machine Learning Repository - Bank Marketing](https://archive.ics.uci.edu/ml/datasets/bank+marketing)
@@ -423,7 +423,7 @@ All models are evaluated using 6 comprehensive metrics:
 
 ---
 
-## 👨‍💻 Author
+##  Author
 
 **Student ID:** 2025aa05072  
 **Program:** M.Tech (AIML)  
@@ -431,13 +431,13 @@ All models are evaluated using 6 comprehensive metrics:
 
 ---
 
-## 📝 License
+##  License
 
 This project is created for academic purposes as part of ML Assignment 2.
 
 ---
 
-## 🙏 Acknowledgments
+##  Acknowledgments
 
 - BITS Pilani for providing the assignment framework
 - UCI Machine Learning Repository for the dataset
