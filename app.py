@@ -468,7 +468,9 @@ def show_prediction_page():
             st.subheader("Classification Report")
             report = get_classification_report(y_true, y_pred)
             report_df = pd.DataFrame(report).T
-            st.dataframe(report_df.style.format("{:.4f}"), use_container_width=True)
+            # Round values for display
+            report_df = report_df.round(4)
+            st.dataframe(report_df, use_container_width=True)
             
         else:
             st.warning("No target column found. Showing predictions only.")
@@ -504,8 +506,10 @@ def show_comparison_page():
         st.subheader("Performance Metrics Comparison")
         
         # Display table
+        # Round values for display
+        results_display = results_df.round(4)
         st.dataframe(
-            results_df.style.format("{:.4f}").background_gradient(cmap='RdYlGn', axis=0),
+            results_display,
             use_container_width=True
         )
         
