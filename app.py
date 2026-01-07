@@ -30,116 +30,124 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
-# Custom CSS for professional and accessible styling
+# Custom CSS - Force light theme and high visibility
 st.markdown("""
     <style>
-    /* Main content area */
+    /* Force light background everywhere */
+    .stApp {
+        background-color: #ffffff;
+    }
+    
     .main {
-        padding: 0rem 1rem;
-        font-size: 16px;
+        background-color: #ffffff;
+        color: #000000;
     }
     
-    /* Metric cards - clean and readable */
+    /* All text should be dark and visible */
+    body, p, span, div, label, h1, h2, h3, h4, h5, h6 {
+        color: #000000 !important;
+    }
+    
+    /* Metric cards */
     .stMetric {
-        background-color: #f8f9fa;
-        padding: 18px;
+        background-color: #f0f0f0;
+        padding: 20px;
         border-radius: 8px;
-        border: 1px solid #dee2e6;
+        border: 2px solid #cccccc;
     }
     
-    /* Metric label */
     .stMetric label {
-        font-size: 16px !important;
-        font-weight: 600 !important;
-        color: #495057 !important;
+        font-size: 18px !important;
+        font-weight: 700 !important;
+        color: #000000 !important;
     }
     
-    /* Metric value - large and clear */
     .stMetric [data-testid="stMetricValue"] {
-        font-size: 32px !important;
-        font-weight: 700 !important;
-        color: #212529 !important;
+        font-size: 36px !important;
+        font-weight: 900 !important;
+        color: #000000 !important;
     }
     
-    /* Headers */
+    /* Headers - all black */
     h1 {
-        color: #1a1a1a !important;
-        text-align: center;
-        padding: 20px 0;
-        font-size: 28px !important;
-        font-weight: 700 !important;
+        color: #000000 !important;
+        font-size: 32px !important;
+        font-weight: 800 !important;
     }
     
     h2 {
-        color: #2c3e50 !important;
-        font-size: 22px !important;
-        font-weight: 600 !important;
-        margin-top: 20px;
+        color: #000000 !important;
+        font-size: 24px !important;
+        font-weight: 700 !important;
     }
     
     h3 {
-        color: #34495e !important;
-        font-size: 18px !important;
-        font-weight: 600 !important;
+        color: #000000 !important;
+        font-size: 20px !important;
+        font-weight: 700 !important;
     }
     
     /* Buttons */
     .stButton>button {
-        width: 100%;
-        background-color: #0d6efd;
+        background-color: #0066cc;
         color: #ffffff;
-        border-radius: 6px;
-        padding: 10px 20px;
-        font-weight: 600;
-        font-size: 15px;
-        border: none;
-    }
-    
-    .stButton>button:hover {
-        background-color: #0b5ed7;
-    }
-    
-    /* Success messages */
-    .stSuccess {
-        background-color: #d1e7dd;
-        color: #0f5132;
-        padding: 12px;
-        border-radius: 6px;
-        font-weight: 500;
-    }
-    
-    /* Info messages */
-    .stInfo {
-        background-color: #cfe2ff;
-        color: #084298;
-        padding: 12px;
+        font-size: 16px;
+        font-weight: 700;
+        padding: 12px 24px;
         border-radius: 6px;
     }
     
-    /* Warning messages */
-    .stWarning {
-        background-color: #fff3cd;
-        color: #664d03;
-        padding: 12px;
-        border-radius: 6px;
-    }
-    
-    /* Error messages */
-    .stError {
-        background-color: #f8d7da;
-        color: #842029;
-        padding: 12px;
-        border-radius: 6px;
-    }
-    
-    /* Dataframe styling */
-    .dataframe {
-        font-size: 14px !important;
+    /* Input labels */
+    .stSelectbox label, .stFileUploader label {
+        color: #000000 !important;
+        font-size: 16px !important;
+        font-weight: 600 !important;
     }
     
     /* Sidebar */
     [data-testid="stSidebar"] {
-        background-color: #f8f9fa;
+        background-color: #f5f5f5;
+    }
+    
+    [data-testid="stSidebar"] * {
+        color: #000000 !important;
+    }
+    
+    /* Success/Info/Warning/Error messages */
+    .stSuccess {
+        background-color: #d4edda;
+        color: #155724 !important;
+        font-weight: 600;
+    }
+    
+    .stInfo {
+        background-color: #d1ecf1;
+        color: #0c5460 !important;
+        font-weight: 600;
+    }
+    
+    .stWarning {
+        background-color: #fff3cd;
+        color: #856404 !important;
+        font-weight: 600;
+    }
+    
+    .stError {
+        background-color: #f8d7da;
+        color: #721c24 !important;
+        font-weight: 600;
+    }
+    
+    /* Tables */
+    .dataframe {
+        color: #000000 !important;
+        font-size: 15px !important;
+    }
+    
+    /* Radio buttons and other inputs */
+    .stRadio label {
+        color: #000000 !important;
+        font-size: 16px !important;
     }
     </style>
     """, unsafe_allow_html=True)
